@@ -73,7 +73,12 @@ const progressBarFill = document.getElementById("progress-bar-fill");
 // Functions
 
 function loadNextBatch() {
-  currentQuestions = allQuestions.slice(batchIndex * 10, (batchIndex + 1) * 10);
+  // Shuffle the questions
+  const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+
+  // Pick the first 10
+  currentQuestions = shuffled.slice(0, 10);
+
   currentQuestionIndex = 0;
   resetProgressBar();
   resetLifelines();
